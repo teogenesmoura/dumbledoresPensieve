@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 		location_based_on_ip = RestClient.get "http://api.ipstack.com/" + user_ip_addr + "?access_key=ee44ee6ab733dbb5eec01fd1588e3430"
 		json = JSON.parse location_based_on_ip
 		puts json
-		if json.has_key?('city')
+		if json['city'].present?		
 			return json['city']
 		else
 			return 'city not found'
