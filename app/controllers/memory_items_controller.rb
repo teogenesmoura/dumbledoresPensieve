@@ -2,6 +2,12 @@ class MemoryItemsController < ApplicationController
 	before_action :set_memory_list
 
 	def create
+		if (params[:memory_item][:location].empty?)
+			params[:memory_item][:location] = "Brasilia"
+		end
+		if (params[:memory_item][:weather].empty?)
+			params[:memory_item][:weather] = "Cloudy with chance of Hamburgers"
+		end
 		@memory_item = @memory_list.memory_items.create(memory_item_params)
 		redirect_to @memory_list
 	end
@@ -23,6 +29,6 @@ class MemoryItemsController < ApplicationController
 	end
 
 	def memory_item_params
-		params[:memory_item].permit(:content)
+		params[:memory_item].permit(:content, :location, :weather, :date_recorded)
 	end
 end

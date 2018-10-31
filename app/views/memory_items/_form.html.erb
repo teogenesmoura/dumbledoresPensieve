@@ -1,4 +1,11 @@
 <%= form_for([@memory_list, @memory_list.memory_items.build]) do |f| %>
- <%= f.text_field :content, placeholder: "New Todo" %>
+ <%= f.label :content %>
+ <%= f.text_field :content, placeholder: "New Memory" %>
+ <%= f.label :location %>
+ <%= f.text_field :location, placeholder: "Hogwarts Headmaster's Room" %>
+ <%= f.label :weather %>
+ <%= f.text_field :weather, placeholder: "Sunny" %>
+ <%= f.label :date_recorded %>
+ <%= f.datetime_select :date_recorded %>
  <%= f.submit %>
 <% end %>

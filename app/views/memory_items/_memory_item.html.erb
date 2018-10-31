@@ -1,2 +1,9 @@
+<p><i> Memory: </i></p>
 <p><%= memory_item.content %></p>
-<%= link_to "Delete", memory_list_memory_item_path(@memory_list, memory_item.id), method: :delete, data: { confirm: "Are you sure?" } %>
+<p><i> Location: </i></p>
+<p><%= memory_item.location %></p>
+<p><i> Weather: </i></p>
+<p><%= memory_item.weather %></p>
+<p><i> Date Recorded: </i></p>
+<p><%= memory_item.date_recorded %></p>
+<%= link_to "Remove memory from Pensieve", memory_list_memory_item_path(@memory_list, memory_item.id), method: :delete, data: { confirm: "Are you sure?" } %>
