@@ -3,10 +3,10 @@ class MemoryItemsController < ApplicationController
 
 	def create
 		if (params[:memory_item][:location].empty?)
-			params[:memory_item][:location] = "Brasilia"
+			params[:memory_item][:location] = get_default_location
 		end
 		if (params[:memory_item][:weather].empty?)
-			params[:memory_item][:weather] = "Cloudy with chance of Hamburgers"
+			params[:memory_item][:weather] = get_default_weather
 		end
 		@memory_item = @memory_list.memory_items.create(memory_item_params)
 		redirect_to @memory_list
