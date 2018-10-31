@@ -10,8 +10,16 @@ class ApplicationController < ActionController::Base
 	end
 
 	def get_default_location
-		user_ip_addr = request.env['REMOTE_ADDR']
-		return "Narnia"
+		user_ip_addr = get_real_ip
+		# TODO: Move API access_key to env variable
+		location_based_on_ip = RestClient.get "http://api.ipstack.com/" + user_ip_addr + "?access_key=ee44ee6ab733dbb5eec01fd1588e3430"
+		json = JSON.parse location_based_on_ip
+
+		if !(json['city'].empty?)
+			return json['city']
+		else
+			return 'City not found'
+		end
 	end
 
 	def get_default_weather
