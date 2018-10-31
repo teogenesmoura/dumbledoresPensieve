@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @memory_list.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @memory_list.description %>
+</p>
+
+<p>
+  <strong>Date created:</strong>
+  <%= @memory_list.date_created %>
+</p>
+
+<div id="memory_items_wrapper">
+ <%= render @memory_list.memory_items %>
+ <div id="form">
+  <%= render "memory_items/form" %>
+ </div>
+</div>
+
+<%= link_to 'Edit', edit_memory_list_path(@memory_list) %> |
+<%= link_to 'Back', memory_lists_path %>
