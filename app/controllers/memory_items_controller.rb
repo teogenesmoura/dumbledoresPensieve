@@ -2,11 +2,14 @@ class MemoryItemsController < ApplicationController
 	before_action :set_memory_list
 
 	def create
-		if (params[:memory_item][:location].empty?)
-			params[:memory_item][:location] = get_default_location
+		location = params[:memory_item][:location]
+		weather = params[:memory_item][:weather]
+		if (location.empty?) and (weather.empty?)
+			params[:memory_item][:location] = get_city_for_ip
+			params[:memory_item][:weather] = get_weather_for_latitude_longitude
 		end
-		if (params[:memory_item][:weather].empty?)
-			params[:memory_item][:weather] = get_default_weather
+		if !(location.empty?) and (weather.empty?)
+			params[:memory_item][:weather] = get_weather_for_city(location)
 		end
 		@memory_item = @memory_list.memory_items.create(memory_item_params)
 		redirect_to @memory_list
