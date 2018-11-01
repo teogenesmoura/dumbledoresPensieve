@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+@import "material";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+@font-face {
+  font-family: 'Potter';
+  src: font-url("potter.ttf") format('truetype');
+}
+
+.dumbledore {
+	font-family: 'Potter', Fallback, sans-serif;
+  	font-weight: 200;
+  	font-size: 6rem;
+}
+.container {
+	margin-bottom: 2%;
+}

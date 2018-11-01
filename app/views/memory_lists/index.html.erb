@@ -1,11 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Memory Lists</h1>
+<div class="dumbledore text-center">Dumbledore's Pensieve</div>
 
-<table>
+<center>
+  <img src="https://vignette.wikia.nocookie.net/harrypotter/images/d/d8/Dumbledore_Memory.jpg/revision/latest?cb=20110212191832" style="max-width:50%;
+  max-height:50%;">
+
+  <blockquote class="blockquote" style="margin: 5%">
+    <p class="mb-0">I use the Pensieve. One simply siphons the excess thoughts from one's mind, pours them into the basin, and examines them at one's leisure. It becomes easier to spot patterns and links, you understand, when they are in this form.</p>
+    <footer class="blockquote-footer">Albus Dumbledore <cite title="Source Title">Harry Potter and the Globet of Fire</cite></footer>
+  </blockquote>
+<center>
+<table class="table">
   <thead>
     <tr>
-      <th>Title</th>
+      <th>Memory List</th>
       <th>Description</th>
       <th>Date created</th>
       <th colspan="3"></th>
@@ -25,7 +34,8 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
+<button type="button" class="btn btn-primary btn-lg" style="background-color: #FFFFFF"><%= link_to 'New Memory List', new_memory_list_path %>
+</button>
+</center>
 
-<%= link_to 'New Memory List', new_memory_list_path %>

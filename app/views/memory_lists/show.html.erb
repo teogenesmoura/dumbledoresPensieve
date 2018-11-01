@@ -1,26 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @memory_list.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @memory_list.description %>
-</p>
-
-<p>
-  <strong>Date created:</strong>
-  <%= @memory_list.date_created %>
-</p>
-
-<div id="memory_items_wrapper">
- <%= render @memory_list.memory_items %>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="<%= memory_lists_path %>">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"> <%= @memory_list.title %></li>
+  </ol>
+</nav>
+<div class="row">
+	<div class="col">
+			<i>Memory list details:</i> <%= @memory_list.description %>
+	</div>
+	<div class="col">
+		  <div class="text-right"><i>Memory list created on:</i> <%= @memory_list.date_created %> </div>
+	</div>
+</div>
+<!-- <div id="memory_items_wrapper">
+ -->
+<% @memory_list.memory_items.each do |memory_item| %>
+	<div class="card" style="margin: 5%">
+	  <h5 class="card-header text-center"><i><%= memory_item.location %></i></h5>
+	  <div class="card-body">
+	    <h5 class="card-title text-center"><%= memory_item.content %></h5>
+	    <p class="card-text text-right">Weather: <i><%= memory_item.weather %></i></p>
+	    <p class="card-text text-right">Created on: <i><%= memory_item.date_recorded %></i></p>
+        <td class="pull-right"><%= link_to 'Delete Memory', memory_list_memory_item_path(:memory_list_id => @memory_list.id, :id => memory_item.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  </div>
+	</div>
+<% end %>
  <div id="form">
   <%= render "memory_items/form" %>
  </div>
 </div>
 
-<%= link_to 'Edit', edit_memory_list_path(@memory_list) %> |
-<%= link_to 'Back', memory_lists_path %>
+

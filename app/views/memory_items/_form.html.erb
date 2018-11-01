@@ -1,11 +1,28 @@
-<%= form_for([@memory_list, @memory_list.memory_items.build]) do |f| %>
- <%= f.label :content %>
- <%= f.text_field :content, placeholder: "New Memory" %>
- <%= f.label :location %>
- <%= f.text_field :location, placeholder: "Hogwarts Headmaster's Room" %>
- <%= f.label :weather %>
- <%= f.text_field :weather, placeholder: "Sunny" %>
- <%= f.label :date_recorded %>
- <%= f.datetime_select :date_recorded %>
- <%= f.submit %>
+<div class="card" style="margin: 5%">
+<%= form_for([@memory_list, @memory_list.memory_items.build],:html => { :style => 'padding:2%;' }) do |f| %>
+	<form style="padding: 5%">
+		<div class="form-group">
+		    <label for="content"><%= f.label :content %></label>
+		    	<%= f.text_field :content, class: "form-control", placeholder: "New Memory" %>
+		</div>
+		<div class="form-group">
+		    <label for="location"><%= f.label :location %></label>
+		  	<%= f.text_field :location, class: "form-control", placeholder: "Headmaster's Room" %>
+		</div>
+		<div class="form-group">
+		    <label for="weather"><%= f.label :weather %></label>
+		    <%= f.text_field :weather, class: "form-control", placeholder: "It's raining Death Eaters" %>
+		</div>
+		<div class="form-group">
+			<label for="Select date"><%= f.label :date_recorded %></label>
+		 	<%= f.datetime_select :date_recorded %>
+		</div>
+		<center>
+	 	<button type="submit" class="btn btn-primary btn-lg" name="commit" style="background-color: #ff4081; margin: 2%;"> Submit</button>
+	 	</center>
+	</form>
 <% end %>
+</div>
+ 
+
+
