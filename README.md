@@ -1,24 +1,45 @@
-# README
+# Dumbledore's Pensieve
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an app that allows users to record their memories, as well as the location they were in and the weather information for that region. 
 
-Things you may want to cover:
+## Demo
+https://dumbledore-pensieve.herokuapp.com/
 
-* Ruby version
+## Getting Started
 
-* System dependencies
+clone this repo
+```
+git clone https://github.com/teogenesmoura/dumbledoresPensieve.git
+``` 
+Install dependencies
+``` 
+bundle install
+``` 
+Run db migrations
+``` 
+rake db:migrate
+``` 
+run :)
+``` 
+rails s
+```
 
-* Configuration
+## Tech Stack
+Rails 5
+JQuery
+Bootstrap
+Postgresql
 
-* Database creation
+## Testing
 
-* Database initialization
+```
+rails test test/models
+rails test test/controllers
+rails test test/helpers
+```
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## License
 
-* Deployment instructions
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-* ...

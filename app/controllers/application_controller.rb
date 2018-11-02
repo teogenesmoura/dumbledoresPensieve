@@ -1,3 +1,4 @@
+#TODO: Move API keys to env variables instead of hard-coded strings
 class ApplicationController < ActionController::Base
 	def get_real_ip
 		if request.remote_ip === '127.0.0.1'
@@ -45,9 +46,12 @@ class ApplicationController < ActionController::Base
 	# TODO: take care of edge cases e.g 'São Paulo'
 	def get_weather_for_city(location)
 		endpoint = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=7bcc10712fe906ecd190ba0bea2c910e"
-		weather_based_on_city = RestClient.get endpoint
+		begin
+			weather_based_on_city = RestClient.get endpoint
+		rescue => e
+			return e.response
+		end 
 		info = JSON.parse weather_based_on_city
-		puts info
 		#checks if we got a 404 for a city that doesn't exist
 		if !(info['cod'].present?)
 		 	return "Couldn't find city"
