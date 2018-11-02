@@ -4,12 +4,10 @@ one:
   content: MyString
   location: MyString
   weather: MyString
-  date_recorded: 2018-10-30 21:21:13
-  memory_list: one
+  date_recorded: 2018-11-02 08:56:43
 
 two:
   content: MyString
   location: MyString
   weather: MyString
-  date_recorded: 2018-10-30 21:21:13
-  memory_list: two
+  date_recorded: 2018-11-02 08:56:43

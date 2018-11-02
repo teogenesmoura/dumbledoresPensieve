@@ -1,32 +1,25 @@
-<%= form_with(model: memory_list, local: true) do |form| %>
-  <% if memory_list.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(memory_list.errors.count, "error") %> prohibited this memory_list from being saved:</h2>
+<div class="card" style="margin: 5%">
+<%= form_for(@memory_list,:html => { :style => 'padding:2%;' }, :url => memory_lists_path, method: :post) do |form| %>  
+<form style="padding: 5%">
+  <div class="form-group">
+    <label for="title"><%= form.label :title %></label>
+    <%= form.text_field :title, class: "form-control required", placeholder: "Memory List Title" %>
+  </div>
 
-      <ul>
-      <% memory_list.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="form-group">
+    <label for="description"><%= form.label :description %></label>
+    <%= form.text_area :description, class: "form-control required", placeholder: "Memory List description" %>
+  </div>
+
+    <div class="form-group">
+      <label for="Select date"><%= form.label :date_created %></label>
+      <%= form.datetime_select :date_created %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+    <button type="submit" class="btn btn-primary btn-lg" name="commit" style="background-color: #ff4081; margin: 2%;"> Submit</button>
+    </center>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date_created %>
-    <%= form.datetime_select :date_created %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    </center>
+  </form>
 <% end %>
+</div>

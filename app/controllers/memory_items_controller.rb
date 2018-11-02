@@ -4,9 +4,13 @@ class MemoryItemsController < ApplicationController
 	def create
 		location = params[:memory_item][:location]
 		weather = params[:memory_item][:weather]
+		if (params[:memory_item][:content].empty?)
+			flash[:error] = "Content should not be empty"
+			redirect_to @memory_list
+		end
 		if (location.empty?) and (weather.empty?)
-			params[:memory_item][:location] = get_city_for_ip
 			params[:memory_item][:weather] = get_weather_for_latitude_longitude
+			params[:memory_item][:location] = get_city_for_ip
 		end
 		if !(location.empty?) and (weather.empty?)
 			params[:memory_item][:weather] = get_weather_for_city(location)
